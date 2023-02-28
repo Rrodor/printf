@@ -6,7 +6,7 @@
 /*   By: rrodor <rrodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 19:06:43 by rrodor            #+#    #+#             */
-/*   Updated: 2023/02/27 20:01:29 by rrodor           ###   ########.fr       */
+/*   Updated: 2023/02/28 19:59:34 by rrodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 
 int		ft_printf(char *str, ...);
 int		ft_redirect(char c, va_list argptr, int l);
@@ -24,4 +25,9 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 int		ft_prints(va_list argptr, int l);
 int		ft_strlen(char *str);
+int		ft_putnbr_base(unsigned long long int n, int l, char *base);
+int		ft_printp(va_list argptr, int l);
+int		ft_printd(va_list argptr, int l);
+int		ft_putnbr(int n, int l, char *base);
+
 #endif

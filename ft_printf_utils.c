@@ -6,7 +6,7 @@
 /*   By: rrodor <rrodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 19:15:14 by rrodor            #+#    #+#             */
-/*   Updated: 2023/02/27 20:24:14 by rrodor           ###   ########.fr       */
+/*   Updated: 2023/02/28 20:12:13 by rrodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	ft_putchar(char c)
 {
-	if (c < 10 && c >= 0)
-		c += 48;
 	write (1, &c, 1);
 }
 
@@ -31,7 +29,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -41,49 +39,60 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		ft_putnbr_base(int n, int l, char *base)
+int	ft_putnbr_base(unsigned long long int n, int l, char *base)
 {
-	int	lbase;
+	int		lbase;
 	char	str[32];
-	int	i;
+	int		i;
 
 	i = 0;
 	lbase = ft_strlen(base);
-	//printf("test");
 	if (n == 0)
 	{
 		ft_putchar(base[i]);
-		l++;
-		return (l);
+		return (l + 1);
 	}
 	while (n > 0)
 	{
-		//printf("test");
 		str[i] = base[n % lbase];
 		i++;
 		n = n / lbase;
 		l++;
 	}
-	i--;
-	while (i >= 0)
-	{
+	while (--i >= 0)
 		ft_putchar(str[i]);
-		i--;
-	}
 	return (l);
 }
 
-/*
-#include <unistd.h>
-#include <stdio.h>
-int main()
+int	ft_putnbr(int n, int l, char *base)
 {
-	char	base[] = "0123456789ABCDEF";
+	char	str[12];
+	int		i;
 
-	ft_putnbr_base(76, 0, base);
-	write(1, "\n", 1);
-	return (0);
-}*/
-
-
-
+	i = 0;
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return (l + 11);
+	}
+	if (n == 0)
+	{
+		ft_putchar('0');
+		return (l + 1);
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		str[i] = base[n % 10];
+		i++;
+		n = n / 10;
+		l++;
+	}
+	while (--i >= 0)
+		ft_putchar(str[i]);
+	return (l);
+}
