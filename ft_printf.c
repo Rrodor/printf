@@ -46,22 +46,33 @@ int	ft_redirect(char c, va_list argptr, int l)
 		l = ft_prints(argptr, l);
 	if (c == 'p')
 		l = ft_printp(argptr, l);
-	if (c == 'd')
+	if (c == 'd' || c == 'i')
 		l = ft_printd(argptr, l);
+	if (c == 'u')
+		l = ft_printu(argptr, l);
+	if (c == 'x')
+		l = ft_printx(argptr, l);
+	if (c == 'X')
+		l = ft_printxm(argptr, l);
+	if (c == '%')
+	{
+		ft_putchar('%');
+		l++;
+	}
 	return (l);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 int	main()
 {
 	int	l = 0;
 	int	l2 = 0;
-	int	t = -2147483648;
+	int 	t = -1984;
 	//int	*test = 0;
-	l = ft_printf("%d", t);
+	l = ft_printf("%X%%", t);
 	ft_putchar('\n');
-	l2 = printf("%d", t);
+	l2 = printf("%X%%", t);
 	printf("\n%d", l);
-	printf("\n%d", l2);
+	printf("\n%d\n", l2);
 	return 0;
-}
+}*/

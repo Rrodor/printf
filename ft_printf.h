@@ -29,5 +29,8 @@ int		ft_putnbr_base(unsigned long long int n, int l, char *base);
 int		ft_printp(va_list argptr, int l);
 int		ft_printd(va_list argptr, int l);
 int		ft_putnbr(int n, int l, char *base);
+int		ft_printu(va_list argptr, int l);
+int		ft_printx(va_list argptr, int l);
+int		ft_printxm(va_list argptr, int l);
 
 #endif
